@@ -1,0 +1,178 @@
+/* ===== Fondo difuminado ===== */
+.login3__content{
+  --background: transparent;
+  position: relative;
+  overflow: hidden;
+  min-height: 100dvh; /* asegura alto completo en móvil */
+}
+.login3__bg{
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background-image: url("/fondo4.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px) brightness(.8);   /* difuminado + oscurecido */
+  transform: scale(1.06);             /* evita bordes/halos por el blur */
+  will-change: transform, filter;
+}
+.login3__dim{
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(180deg, rgba(10,18,40,.25), rgba(10,18,40,.55));
+}
+
+/* ===== Wrapper centrado ===== */
+.login3__wrap{
+  min-height: 100dvh;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  row-gap: 18px;
+  padding: 32px 16px 24px;
+}
+
+/* ===== Logo fuera de la tarjeta ===== */
+.login3__brand{
+  width: min(260px, 60vw);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
+  margin-top: 6px;
+}
+
+/* ===== Tarjeta blanca con borde gradiente ===== */
+.login3__card{
+  width: min(520px, 92vw);
+  border-radius: 18px;
+
+  /* Fondo blanco + borde en gradiente (a juego con el botón) */
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, #852c5e 0%, rgb(196, 39, 235) 52%, #1448e4 100%) border-box;
+  border: 3px solid transparent; /* borde delgado */
+
+  color: #0f172a;
+  box-shadow:
+    0 20px 45px rgba(2,6,23,.25),
+    0 6px 16px rgba(2,6,23,.18);
+  padding: 32px 32px 30px;
+}
+
+/* Título + subtítulo */
+.login3__title{
+  margin: 1px 0 6px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #831689;
+}
+.login3__subtitle{
+  margin: 0 0 14px;
+  text-align: center;
+  color: #794e75;
+  line-height: 1.35;
+}
+
+/* ===== Campos ===== */
+.login3__field{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #eef2ff;      /* leve fondo del campo */
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #f1a9d9;
+}
+.login3__field:focus-within{
+  border-color: #b995f7;
+  box-shadow: 0 0 0 3px rgba(142, 115, 229, 0.18); /* halo acorde al acento */
+}
+.login3__icon{ font-size: 18px; color: #64748b; }
+.login3__input{
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #001e64;
+  font-weight: 600;
+}
+.login3__input::placeholder{ color: #94a3b8; font-weight: 500; }
+
+/* ===== Error ===== */
+.login3__error{
+  margin: 2px 0 10px;
+  padding: 8px 12px;
+  background: #fee2e2;
+  color: #7f1d1d;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+}
+
+/* ===== Botón ===== */
+.login3__cta{
+  background: transparent !important;
+  border: none !important;
+  width: 100%;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+/* Botón con gradiente elegante */
+.login3__cta::part(native){
+  width: 100%;
+  height: 46px;
+  border-radius: 12px;
+
+  /* capa de brillo + base en diagonal */
+  background-image:
+    linear-gradient(180deg, rgba(107, 107, 107, 0.18), rgba(204, 12, 12, 0) 42%),
+    linear-gradient(135deg, #360152 0%, #722e97 50%, #ce9aea 100%);
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: .2px;
+
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 10px 24px rgba(46,63,124,.35),
+    inset 0 1px 0 rgba(255,255,255,.35);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+.login3__cta::part(native):hover{
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+  box-shadow:
+    0 14px 28px rgba(46,63,124,.38),
+    inset 0 1px 0 rgba(255,255,255,.4);
+}
+.login3__cta::part(native):active{
+  filter: brightness(.97);
+  transform: translateY(0);
+  box-shadow:
+    0 8px 18px rgba(46,63,124,.32),
+    inset 0 1px 0 rgba(255,255,255,.25);
+}
+.login3__cta::part(native):focus-visible{
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgba(137,22,87,.25),
+    0 10px 24px rgba(46,63,124,.35),
+    inset 0 1px 0 rgba(255,255,255,.35);
+}
+/* estado disabled del IonButton (host con atributo) */
+.login3__cta[disabled]::part(native){
+  opacity: .75;
+  filter: grayscale(.1) brightness(.95);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 6px 14px rgba(46,63,124,.25);
+}
+
+/* ===== Responsive ===== */
+@media (min-width: 768px){
+  .login3__wrap{ row-gap: 22px; padding-top: 40px; }
+  .login3__card{ width: 560px; padding: 28px; }
+  .login3__title{ font-size: 1.9rem; }
+}

@@ -1,0 +1,60 @@
+# --- Node / Vite / Ionic ---
+node_modules/
+dist/
+.tmp/
+.temp/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json    # <— si prefieres usar pnpm/yarn; si usas npm, quita esta línea
+
+# Vite cache
+.vite/
+.cache/
+vite.svg
+
+# Env (nunca subir credenciales)
+.env
+.env.*
+!.env.example
+
+# --- Capacitor / Android Studio ---
+# No ignores el directorio android completo: contiene el proyecto nativo.
+android/.gradle/
+android/.idea/
+android/.cxx/
+android/local.properties
+android/*/build/
+android/app/build/
+android/build/
+android/captures/
+*.iml
+
+# Firmas (NUNCA subir keystores)
+*.jks
+*.keystore
+*.keystore.properties
+*.signing
+
+# --- iOS (por si luego agregas) ---
+ios/build/
+ios/Pods/
+*.xcworkspace
+*.xcuserdatad
+*.xcuserstate
+ios/*.xcuserdatad
+ios/*/build/
+
+# --- Cypress / Playwright (si usas) ---
+cypress/videos/
+cypress/screenshots/
+playwright-report/
+test-results/
+
+# --- SO/IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.history/

@@ -1,0 +1,264 @@
+/* ===== Variables base ===== */
+:root{
+    --primary:#3880ff; --primary-rgb:56,128,255; --primary-contrast:#fff; --primary-shade:#3171e0;
+    --secondary:#0cd1e8; --secondary-rgb:12,209,232; --secondary-contrast:#fff;
+    --tertiary:#7044ff;
+    --success:#10dc60; --success-rgb:16,220,96; --success-contrast:#fff;
+    --danger:#f04141; --danger-rgb:240,65,65; --danger-contrast:#fff;
+  
+    --dark:#222428; --medium:#92949c; --light:#f4f5f8;
+  
+    --app-background:#f8fafc;
+    --card-background:#ffffff;
+    --header-background:linear-gradient(135deg,var(--primary) 0%,var(--tertiary) 100%);
+  
+    --shadow-light:0 2px 8px rgba(0,0,0,.1);
+    --shadow-medium:0 4px 16px rgba(0,0,0,.12);
+    --shadow-strong:0 8px 24px rgba(0,0,0,.15);
+  
+    --radius:12px; --radius-lg:20px;
+  
+    --t-fast:.15s ease-out; --t-med:.25s ease-out;
+  }
+  
+  /* ===== Base ===== */
+  ion-app{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  
+  /* ===== Layout principal ===== */
+  .asis__content{
+    /* Evita que el header translúcido tape el contenido */
+    --padding-top: calc(env(safe-area-inset-top) + 12px);
+    --padding-bottom: 12px;
+    --padding-start: 16px; --padding-end: 16px;
+    --background: var(--app-background);
+  }
+  .asis__top{ align-items:stretch; gap:16px; }
+  
+  /* ===== Header / Toolbar ===== */
+  .asis__header{ --background:transparent; box-shadow:none; }
+  .asis__toolbar{
+    --background:var(--header-background); --color:#fff;
+    --min-height:56px; --padding-start:16px; --padding-end:16px;
+    position:relative;
+  }
+  .asis__toolbar::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+    background:rgba(255,255,255,.2);
+  }
+  .asis__brand{ font-weight:700; font-size:1.25rem; letter-spacing:-.02em; }
+  
+  /* Botón usuario / menú */
+  .asis__userbtn{
+    --background:rgba(255,255,255,.1);
+    --background-activated:rgba(255,255,255,.2);
+    --color:#fff; --border-radius:20px;
+    --padding-start:12px; --padding-end:12px;
+    height:40px; font-weight:600;
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  }
+  .asis__username{ font-size:.875rem; margin:0 6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:120px; }
+  .asis__userpop{ --width:280px; --max-width:90vw; --border-radius:var(--radius-lg); --box-shadow:var(--shadow-strong); }
+  .asis__userlist{ background:var(--card-background); border-radius:var(--radius-lg); padding:8px; }
+  .asis__useritem{ --background:transparent; --color:var(--dark); --padding-start:16px; --padding-end:16px; --min-height:56px; border-radius:var(--radius); margin-bottom:4px; }
+  .asis__userlabelTop{ font-weight:700; color:var(--dark); }
+  .asis__userlabelSub{ color:var(--medium); font-size:.875rem; margin-top:2px; }
+  .asis__divider{ --background:rgba(0,0,0,.08); margin:8px 0; min-height:1px; }
+  .asis__logout{ --background:rgba(var(--danger-rgb),.1); --background-activated:rgba(var(--danger-rgb),.15); --color:var(--danger); --padding-start:16px; --padding-end:16px; --min-height:48px; border-radius:var(--radius); font-weight:600; }
+  
+  /* ===== Tarjetas / Paneles ===== */
+  .asis__panel{
+    background:var(--card-background); border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-light); border:1px solid rgba(0,0,0,.05);
+    margin-bottom:16px; overflow:hidden;
+  }
+  .asis__panel:hover{ box-shadow:var(--shadow-medium); transition:box-shadow var(--t-med); }
+  
+  /* Título “Bienvenido” */
+  .asis__title{ margin:8px 0 16px; font-weight:800; font-size:1.5rem; color:var(--dark); text-align:center; }
+  
+  /* Logo circular */
+  .asis__logo{
+    width:120px; height:120px; margin:24px auto; border-radius:50%;
+    background:var(--header-background); display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow-medium);
+  }
+  .asis__logo img{ width:64px; height:64px; filter:brightness(0) invert(1); }
+  
+  /* Bienvenida + reloj */
+  .asis__welcome{
+    text-align:center; margin-bottom:24px; padding:20px 16px;
+    background:var(--light); border-radius:var(--radius);
+    border:1px solid rgba(0,0,0,.05);
+  }
+  .asis__welcome strong{ font-size:1.25rem; font-weight:800; color:var(--dark); display:block; margin-bottom:8px; }
+  .asis__clock{ color:var(--medium); font-size:.94rem; font-weight:600; }
+  
+  /* Tarjeta de hint */
+  .asis__hint{ --background:rgba(var(--primary-rgb),.05); --color:var(--dark); border:1px solid rgba(var(--primary-rgb),.1); border-radius:var(--radius); margin:20px 0; }
+  .asis__hint ion-label{ font-weight:600; text-align:center; line-height:1.5; padding:4px 0; }
+  
+  /* Centro el contenido de la tarjeta izquierda */
+  .asis__panel .asis__welcome,
+  .asis__panel .asis__hint,
+  .asis__panel .asis__challenge,
+  .asis__panel .asis__btn{ margin-left:auto; margin-right:auto; max-width:520px; }
+  
+  /* ===== Desafío de dígitos (FIX FINAL) ===== */
+.asis__challenge{
+    display:flex; gap:16px; justify-content:center; margin-bottom:24px; flex-wrap:wrap;
+  }
+  
+  /* Damos aire para que el chip NO tape el input */
+  .asis__challengeBox{
+    position:relative;
+    width:100px;               /* ancho cómodo */
+    padding-top:16px;          /* baja el input bajo el chip */
+    flex-shrink:0;
+  }
+  
+  /* Chip de posición */
+  .asis__challengeLabel{
+    position:absolute; top:-6px; left:50%; transform:translateX(-50%);
+    background:var(--secondary); color:var(--secondary-contrast);
+    font-size:.75rem; font-weight:700; padding:4px 8px; border-radius:12px;
+    box-shadow:0 2px 8px rgba(var(--secondary-rgb), .3);
+    z-index:1;
+  }
+  
+  /* Host del IonInput ocupa todo el slot y sin subrayado del tema */
+  .asis__input{
+    display:block; width:100%;
+    --padding-start:0; --padding-end:0;
+    --highlight-color: transparent;
+    --highlight-color-focused: transparent;
+    --background: #ffffff;            /* asegura fondo */
+    --color: #0f172a;
+    --border-radius: 12px;
+    --border-color: #94a3b8;          /* visible */
+  }
+  
+  /* Caja real del input (Shadow DOM): dibujar el rectángulo sí o sí */
+  .asis__input::part(native){
+    width:100%; box-sizing:border-box;
+    height:60px; padding:0 12px;
+    background:#ffffff;
+    border:2px solid #94a3b8;         /* slate-400 */
+    border-radius:12px;
+    box-shadow:0 1px 2px rgba(0,0,0,.06), inset 0 0 0 1px rgba(255,255,255,.5);
+    text-align:center;
+    font-size:1.5rem; font-weight:800; letter-spacing:.08em; color:#0f172a;
+    outline:none; appearance:none;
+  }
+  
+  /* Foco accesible sin “rayita” inferior */
+  .asis__input:focus-within::part(native){
+    border-color:#2563eb;             /* blue-600 */
+    box-shadow:0 0 0 3px rgba(37,99,235,.20);
+  }
+  
+  /* Evita bordes/subrayados del input interno del navegador */
+  .asis__input::part(native) input{
+    width:100%;
+    background:transparent !important;
+    border:none !important;
+    outline:none !important;
+    text-align:center;
+    -webkit-appearance:none;
+  }
+  
+  /* Tamaño mayor en desktop (opcional) */
+  @media (min-width: 992px){
+    .asis__challengeBox{ width:110px; }
+    .asis__input::part(native){ height:64px; font-size:1.75rem; }
+  }
+  
+  
+  /* ===== Tabla de registros ===== */
+  .asis__controls{ display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
+  .asis__tableWrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:var(--radius); border:1px solid rgba(0,0,0,.05); background:var(--card-background); }
+  .asis__table{ width:100%; border-collapse:collapse; font-size:.9rem; min-width:700px; }
+  .asis__table th, .asis__table td{ padding:12px 16px; border-bottom:1px solid rgba(0,0,0,.05); white-space:nowrap; }
+  .asis__table thead th{
+    position:sticky; top:0; background:var(--header-background); color:#fff;
+    text-align:left; font-weight:700; font-size:.8rem; text-transform:uppercase; letter-spacing:.5px; z-index:1;
+  }
+  .asis__table tbody tr{ transition:background-color var(--t-fast); }
+  .asis__table tbody tr:nth-child(even){ background:rgba(0,0,0,.02); }
+  .asis__table tbody tr:hover{ background:rgba(var(--primary-rgb),.05) !important; }
+  .asis__table tr.late{ background:rgba(var(--danger-rgb),.05); border-left:3px solid var(--danger); }
+  .asis__table tr.ontime{ background:rgba(var(--success-rgb),.05); border-left:3px solid var(--success); }
+  
+  /* Tags de estado */
+  .asis__tag{ padding:4px 12px; border-radius:16px; font-weight:700; font-size:.75rem; text-transform:uppercase; letter-spacing:.25px; display:inline-block; min-width:70px; text-align:center; }
+  .asis__tag.tag--late{ background:var(--danger); color:#fff; }
+  .asis__tag.tag--ok{ background:var(--success); color:#fff; }
+  
+  /* Footer de la tabla */
+  .asis__footerInfo{
+    margin-top:16px; padding:12px 16px; background:var(--light);
+    border-radius:var(--radius); text-align:center; color:var(--medium);
+    font-weight:600; font-size:.875rem; border:1px solid rgba(0,0,0,.05);
+  }
+  
+  /* ===== Responsive ===== */
+  @media (min-width:768px){
+    .asis__content{ --padding-start:24px; --padding-end:24px; }
+    .asis__panel{ margin-bottom:24px; }
+    .asis__challenge{ gap:16px; }
+    .asis__challengeBox{ width:80px; }
+    .asis__input::part(native){ height:60px; }
+    .asis__table{ min-width:auto; font-size:.95rem; }
+    .asis__table th, .asis__table td{ padding:16px 20px; }
+  }
+  @media (min-width:992px){
+    .asis__content{ --padding-start:32px; --padding-end:32px; max-width:1200px; margin:0 auto; }
+    .asis__toolbar{ --padding-start:32px; --padding-end:32px; }
+    .asis__logo{ width:140px; height:140px; margin:32px auto; }
+    .asis__logo img{ width:80px; height:80px; }
+    .asis__challenge{ gap:20px; }
+    .asis__challengeBox{ width:90px; }
+    .asis__input::part(native){ height:64px; font-size:1.75rem; }
+    .asis__btn::part(native){ height:52px; font-size:1.06rem; }
+    /* Columna izquierda más compacta en desktop */
+    .asis__top > ion-col[size-md="4"]{ max-width:420px; }
+  }
+  @media (max-width:480px){
+    .asis__content{ --padding-start:12px; --padding-end:12px; }
+    .asis__username{ display:none; } /* oculta el nombre en móviles muy pequeños */
+    .asis__challenge{ gap:8px; }
+    .asis__challengeBox{ width:60px; }
+    .asis__input::part(native){ height:48px; font-size:1.25rem; }
+    .asis__table th, .asis__table td{ padding:8px 12px; font-size:.82rem; }
+    .asis__tag{ font-size:.69rem; padding:3px 8px; min-width:60px; }
+  }
+  
+  /* ===== Accesibilidad / rendimiento ===== */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+  }
+  .asis__userbtn, .asis__btn, .asis__logout, ion-button{ -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+  
+  /* Scrollbar (desktop) */
+  @media (min-width:768px){
+    .asis__tableWrap::-webkit-scrollbar{ width:8px; height:8px; }
+    .asis__tableWrap::-webkit-scrollbar-track{ background:var(--light); border-radius:4px; }
+    .asis__tableWrap::-webkit-scrollbar-thumb{ background:var(--medium); border-radius:4px; }
+    .asis__tableWrap::-webkit-scrollbar-thumb:hover{ background:var(--dark); }
+  }
+  
+  /* Focus visible */
+  .asis__userbtn:focus, .asis__btn:focus, .asis__input:focus-within{
+    outline:2px solid var(--primary); outline-offset:2px;
+  }
+  
+  /* ===== Modo oscuro ===== */
+  @media (prefers-color-scheme: dark){
+    :root{
+      --app-background:#1a1a1a; --card-background:#2a2a2a;
+      --dark:#ffffff; --medium:#a0a0a0; --light:#3a3a3a;
+    }
+  }
+  
