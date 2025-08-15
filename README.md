@@ -1,70 +1,151 @@
+# Sistema de Registro de Asistencias
 
-# 📋 Attendace App Hybrid
+Una aplicación híbrida desarrollada con Ionic + React para el registro y seguimiento de asistencias académicas. Permite a los usuarios registrar su asistencia mediante validación de identidad con cédula y visualizar su historial completo con cálculo automático de atrasos.
 
-Aplicación híbrida desarrollada con **Ionic + React** para el **registro y consulta de asistencias** de usuarios.
-La app se conecta a una API externa para autenticar usuarios y obtener datos de asistencia en tiempo real:
+##  Características
 
-**API utilizada:** [`https://puce.estudioika.com/api/examen.php`](https://puce.estudioika.com/api/examen.php)
+- **Autenticación segura** con credenciales institucionales
+- **Validación de identidad** mediante dígitos de cédula
+- **Registro de asistencia** con timestamp automático
+- **Cálculo automático de atrasos** basado en horarios académicos
+- **Historial completo** con filtros y búsqueda
+- **Diseño responsive** para móvil, tablet y escritorio
+- **Aplicación nativa** compatible con Android
 
-## 🔍 Funcionalidades
+##  Tecnologías Utilizadas
 
-* **Login** mediante usuario y contraseña (conexión a API).
-* Consulta de registros de asistencia asociados al usuario autenticado.
-* Interfaz optimizada para **navegador y dispositivos Android**.
-* Uso de **Capacitor** para integración con Android Studio.
+- **[Ionic Framework](https://ionicframework.com/)** - Framework híbrido
+- **[React](https://reactjs.org/)** - Biblioteca de JavaScript
+- **[Capacitor](https://capacitorjs.com/)** - Runtime nativo
+- **[TypeScript](https://www.typescriptlang.org/)** - Lenguaje de programación
+- **[CSS3](https://developer.mozilla.org/es/docs/Web/CSS)** - Estilos y responsive design
 
----
+##  Requisitos Previos
 
-## ⚙️ Instalación y configuración
+- Node.js (v16 o superior)
+- npm o yarn
+- Android Studio (para compilación nativa)
+- Ionic CLI
 
+##  Instalación
+
+### 1. Clonar el repositorio
 ```bash
-# 1️⃣ Clonar el repositorio
-git clone https://github.com/ArielU10/attendace-app-hybrid.git
-cd attendace-app-hybrid
-
-# 2️⃣ Instalar dependencias
-npm install
-
-# 3️⃣ Ejecutar en navegador (modo desarrollo)
-ionic serve
+git clone https://github.com/fernandog87/APP-HIBRIDA-ASISTENCIA.git
+cd App_Registro_asistencia
 ```
 
----
+### 2. Instalar dependencias
+```bash
+npm install
+```
 
-## 📱 Comandos para Android
+### 3. Configurar Ionic (si es necesario)
+```bash
+npm install -g @ionic/cli
+```
+
+##  Comandos de Desarrollo
+
+### Ejecutar en modo desarrollo
+```bash
+npm run build
+```
+
+### Comandos de Capacitor
+
+#### Copiar archivos a Android
+```bash
+npx cap copy android
+```
+
+#### Sincronizar dependencias y plugins
+```bash
+npx cap sync android
+```
+
+#### Abrir proyecto en Android Studio
+```bash
+npx cap open android
+```
+
+##  Despliegue para Android
+
+### 1. Preparar el proyecto
+Ejecuta los comandos en el siguiente orden:
 
 ```bash
-# 1️⃣ Construir la app
-ionic build
+# Construir la aplicación para producción
+npm run build
 
-# 2️⃣ Sincronizar cambios con Android
+# Copiar archivos de build/ a la carpeta de Android
+npx cap copy android
+
+# Sincronizar dependencias y plugins con Android
 npx cap sync android
 
-# 3️⃣ Abrir en Android Studio
+# Abrir el proyecto en Android Studio
 npx cap open android
-
-# 4️⃣ Ejecutar en dispositivo o emulador
-ionic capacitor run android
 ```
+
+### 2. Generar APK en Android Studio
+
+1. En Android Studio, ve a **Build** → **Build Bundle(s)/APK(s)** → **Build APK(s)**
+2. Espera a que termine la compilación
+3. Clic en **locate** para encontrar el archivo APK
+4. El archivo se generará en: `android/app/build/outputs/apk/debug/app-debug.apk`
+
+### 3. Instalar en dispositivo Android
+
+1. **Transferir el APK** al dispositivo (USB, email, WhatsApp)
+2. **Habilitar fuentes desconocidas** en configuración
+3. **Instalar la APK** desde el administrador de archivos
+4. **Abrir la aplicación** desde el menú
+
+##  Uso de la Aplicación
+
+### Login
+- Ingresa tu **usuario institucional** (correo sin @dominio)
+- Usa tu **contraseña** o cédula como credencial
+
+### Registro de Asistencia
+- Completa la **validación de identidad** con dígitos de cédula
+- Clic en **"Registrar Asistencia"**
+- El sistema calculará automáticamente si hay atraso
+
+### Horarios Académicos
+- **Lunes a Viernes**: 17:00 hrs
+- **Sábados**: 08:00 hrs
+
+##  Funcionalidades
+
+- ✅ **Autenticación** con API backend
+- ✅ **Validación de identidad** por cédula
+- ✅ **Registro timestamp** automático
+- ✅ **Cálculo de atrasos** en tiempo real
+- ✅ **Historial filtrable** y buscable
+- ✅ **Responsive design** multiplataforma
+- ✅ **Compilación nativa** para Android
+
+##  Seguridad
+
+- Validación de identidad mediante dígitos aleatorios de cédula
+- Comunicación segura con API backend
+- Autenticación de sesión con localStorage
+- Validación de entrada de datos
+
+##  Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+##  Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -m 'Agregar nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
 
 ---
 
-## 🌐 Migración y despliegue
-
-Si realizas cambios en el código, sigue estos pasos para reflejarlos en Android:
-
-```bash
-ionic build       # Genera la carpeta www
-npx cap copy      # Copia los archivos web al proyecto nativo
-npx cap sync      # Sincroniza plugins y configuraciones
-npx cap open android  # Abre en Android Studio para compilar y ejecutar
-```
-
----
-
-## 📂 Estructura del proyecto
-
-* `src/` → Código fuente React + Ionic
-* `public/` → Recursos estáticos
-* `android/` → Proyecto nativo Android generado por Capacitor
-
+**Desarrollado con  usando Ionic + React**
